@@ -1,0 +1,58 @@
+<%- include('includes/head') %>
+<body>
+  <div class="forecast-page">
+    <div class="city-search-block">
+      <form action="/getCityReport" method="post">
+        <div class="input-container">
+          <input
+            type="text"
+            class="search-input"
+            name="cityName"
+            id="cityName"
+            placeholder="Enter city,and code e.g:Kiev,Ua "
+          />
+        </div>
+        <button class="search-button" type="submit">Get weather report</button>
+      </form>
+    </div>
+    <div class="weather-card">
+      <% if (cities.length>0) { %> <% for (let item of cities) { %>
+      <div class="card">
+        <div class="city-name">
+          <%=item.name%>
+          <form action="/removeWeatherCard" method="POST">
+            <button class="close hairline" type="submit"></button>
+          </form>
+        </div>
+        <ul class="days">
+          <li>
+            <div class="today">
+              <%=item.temperature%>
+              <span class="degree">&#8451;</span>
+            </div>
+            <div class=" <%=item.icon%>"></div>
+          </li>
+          <li>
+            <span class="day-name">day</span>
+            <div class="temperature">
+              <%=item.tomorrowTemperature%>
+              <span class="degree">&#8451;</span>
+            </div>
+            <div class=" <%=item.tomorrowIcon%>"></div>
+          </li>
+          <li>
+            <span class="day-name">day</span>
+            <div class="temperature">
+              <%=item.dayAfterTomorrowTemperature%>
+              <span class="degree">&#8451;</span>
+            </div>
+            <div class=" <%=item.dayAfterTomorrowIcon%>"></div>
+          </li>
+        </ul>
+      </div>
+      <% }} else { %>
+      <h1>Empty</h1>
+      <% } %>
+    </div>
+  </div>
+</body>

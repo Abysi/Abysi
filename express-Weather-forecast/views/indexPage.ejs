@@ -1,0 +1,24 @@
+<%- include('includes/head.ejs')%>
+<body>
+  <form action="/login" method="post">
+    <div class="app">
+      <div class="input-container">
+        <input
+          type="text"
+          name="userName"
+          id="userName"
+          placeholder="Enter login"
+        />
+      </div>
+      <div class="input-container">
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Enter password"
+        />
+      </div>
+      <button class="btn" type="submit">Login</button>
+    </div>
+  </form>
+</body>
